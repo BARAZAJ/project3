@@ -1,0 +1,56 @@
+# Get all users
+GET http://localhost:3001/api/users
+Content-Type: application/json
+
+###
+# Get Swagger Docs
+GET http://localhost:3001/api-docs
+
+
+
+
+
+
+# Get a single user by ID
+GET http://localhost:3001/api/users/673754c7fbe6d835030b73dc
+Content-Type: application/json
+
+# Replace {{USER_ID}} with an actual user ID
+
+###
+
+# Create a new user
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+    "email": "newuser@example.com",
+    "firstname": "newuser123",
+    "lastname": "New User",
+    "favoritecolor": "green",
+    "birthdate":"01/01/2000"
+}
+
+###
+
+# Update an existing user
+PUT http://localhost:3001/api/users/673754c7fbe6d835030b73dc
+Content-Type: application/json
+
+{
+    "email": "newuser@example.com",
+    "firstname": "newuser123",
+    "lastname": "New User",
+    "favoritecolor": "green",
+    "birthdate":"01/01/2000"
+}
+
+# Replace {{USER_ID}} with an actual user ID
+
+###
+
+# Delete a user
+DELETE http://localhost:3001/api/users/{{USER_ID}}
+Content-Type: application/json
+
+# Replace {{USER_ID}} with an actual user ID

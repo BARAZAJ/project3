@@ -1,0 +1,42 @@
+# Get all users
+GET http://localhost:3001/api/users
+Content-Type: application/json
+
+###
+
+# Get a single user by ID
+GET http://localhost:3001/api/users/{{USER_ID}}
+Content-Type: application/json
+
+###
+
+# Create a new user
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+    "email": "newuser@example.com",
+    "username": "newuser123",
+    "name": "New User",
+    "ipaddress": "192.168.1.1",
+    "contact": {
+        "phone": "123-456-7890",
+        "address": "123 Main St, Springfield, USA"
+    }
+}
+
+###
+
+# Update a user
+PUT http://localhost:3001/api/users/{{USER_ID}}
+Content-Type: application/json
+
+{
+    "name": "Updated User"
+}
+
+###
+
+# Delete a user
+DELETE http://localhost:3001/api/users/{{USER_ID}}
+Content-Type: application/json

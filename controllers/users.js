@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const User = require('../models/User');
 
 // Get all users
@@ -7,7 +6,7 @@ const getAll = async (req, res) => {
         const users = await User.find();
         res.status(200).json(users);
     } catch (err) {
-        console.error('Error fetching users:', err);
+        console.error('Error fetching users:', err.message);
         res.status(500).json({ error: 'Error fetching users' });
     }
 };
@@ -21,7 +20,10 @@ const getSingle = async (req, res) => {
         }
         res.status(200).json(user);
     } catch (err) {
-        console.error('Error fetching user:', err);
+        if (err.kind === 'ObjectId') {
+            return res.status(400).json({ error: 'Invalid user ID format' });
+        }
+        console.error('Error fetching user:', err.message);
         res.status(500).json({ error: 'Error fetching user' });
     }
 };
@@ -33,7 +35,7 @@ const createUser = async (req, res) => {
         await user.save();
         res.status(201).json(user);
     } catch (err) {
-        console.error('Error creating user:', err);
+        console.error('Error creating user:', err.message);
         res.status(400).json({ error: 'Invalid user data' });
     }
 };
@@ -48,9 +50,12 @@ const updateUser = async (req, res) => {
         if (!user) {
             return res.status(404).json({ error: 'User not found' });
         }
-        res.status(200).json(user);
+        res.status(204).send();
     } catch (err) {
-        console.error('Error updating user:', err);
+        if (err.kind === 'ObjectId') {
+            return res.status(400).json({ error: 'Invalid user ID format' });
+        }
+        console.error('Error updating user:', err.message);
         res.status(400).json({ error: 'Invalid user data' });
     }
 };
@@ -64,7 +69,10 @@ const deleteUser = async (req, res) => {
         }
         res.status(204).send();
     } catch (err) {
-        console.error('Error deleting user:', err);
+        if (err.kind === 'ObjectId') {
+            return res.status(400).json({ error: 'Invalid user ID format' });
+        }
+        console.error('Error deleting user:', err.message);
         res.status(500).json({ error: 'Error deleting user' });
     }
 };

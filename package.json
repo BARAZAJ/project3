@@ -1,14 +1,21 @@
 {
-  "name": "project3",
+  "name": "node-rest-api",
   "version": "1.0.0",
+  "description": "A simple REST API with Node.js and MongoDB",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
-    "express": "^4.21.2"
+    "dotenv": "^16.4.7",
+    "express": "^4.18.2",
+    "express-validator": "^7.2.0",
+    "mongoose": "^7.0.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
   }
 }

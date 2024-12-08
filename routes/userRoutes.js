@@ -10,9 +10,7 @@ const { body, param, validationResult } = require('express-validator');
 
 const router = express.Router();
 
-/**
- * Helper function for validation error handling
- */
+// Helper function for validation error handling
 const validate = (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -85,9 +83,10 @@ router.get(
 router.post(
     '/',
     body('email', 'Invalid email').isEmail(),
-    body('username', 'Username is required').notEmpty(),
-    body('name', 'Name is required').notEmpty(),
-    body('ipaddress', 'Invalid IP address').isIP(),
+    body('firstname', 'First name is required').notEmpty(),
+    body('lastname', 'Last name is required').notEmpty(),
+    body('favoritecolor', 'Favorite color is required').notEmpty(),
+    body('birthdate', 'Invalid birthdate').isISO8601(),
     validate,
     createUser
 );
@@ -118,9 +117,10 @@ router.put(
     '/:id',
     param('id', 'Invalid user ID').isMongoId(),
     body('email', 'Invalid email').optional().isEmail(),
-    body('username', 'Username is required').optional().notEmpty(),
-    body('name', 'Name is required').optional().notEmpty(),
-    body('ipaddress', 'Invalid IP address').optional().isIP(),
+    body('firstname', 'First name is required').optional().notEmpty(),
+    body('lastname', 'Last name is required').optional().notEmpty(),
+    body('favoritecolor', 'Favorite color is required').optional().notEmpty(),
+    body('birthdate', 'Invalid birthdate').optional().isISO8601(),
     validate,
     updateUser
 );

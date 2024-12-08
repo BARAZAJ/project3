@@ -19,16 +19,15 @@ swaggerUiSetup(app);
 // API Routes
 app.use('/api/users', userRoutes);
 
-// Root Route for Testing
+// Root route for testing
 app.get('/', (req, res) => {
     res.send('API is running.');
 });
 
-// Start Server
+// Start server
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
-
 
 
 

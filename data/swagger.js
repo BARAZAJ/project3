@@ -17,7 +17,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: 'http://localhost:3001/', // Change the URL based on where your API is hosted
+        url: 'https://project3-addk.onrender.com/', // Change the URL based on where your API is hosted
       },
     ],
     components: {
